@@ -1,10 +1,15 @@
+
 <script setup lang="ts">
 import { ref } from 'vue'
 
 const botonActivo = ref<number | null>(null)
 
+const emit = defineEmits(['seleccionar'])
+
 function seleccionarBoton(indice: number) {
   botonActivo.value = botonActivo.value === indice ? null : indice
+
+  emit('seleccionar', botonActivo.value)
 }
 </script>
 
@@ -14,41 +19,59 @@ function seleccionarBoton(indice: number) {
       type="button"
       class="button"
       :class="{ activo: botonActivo === 0 }"
-      @click="seleccionarBoton(0)">
-      <img class="img" src="../../assets/Casa.png" alt="Imagen de casa"></button>
-    <button type="button"
+      @click="seleccionarBoton(0)"
+    >
+      <img class="img" src="../../assets/Casa.png" alt="Inicio">
+    </button>
+
+    <button
+      type="button"
       class="button"
       :class="{ activo: botonActivo === 1 }"
       @click="seleccionarBoton(1)"
-      ><img class="img" src="../../assets/Elemento lateral.png" alt="Imagen de elemento"></button>
-    <button type="button"
+    >
+      <img class="img" src="../../assets/Elemento lateral.png" alt="Calificaciones">
+    </button>
+
+    <button
+      type="button"
       class="button"
       :class="{ activo: botonActivo === 2 }"
       @click="seleccionarBoton(2)"
-      ><img class="img" src="../../assets/Elemento lateral (1).png" alt="Imagen de elemento"></button>
-    <button type="button"
+    >
+      <img class="img" src="../../assets/Elemento lateral (1).png" alt="Imagen de elemento">
+    </button>
+
+    <button
+      type="button"
       class="button"
       :class="{ activo: botonActivo === 3 }"
       @click="seleccionarBoton(3)"
-      ><img class="img" src="../../assets/Elemento lateral (2).png" alt="Imagen de elemento"></button>
-    <button type="button"
+    >
+      <img class="img" src="../../assets/Elemento lateral (2).png" alt="Imagen de elemento">
+    </button>
+
+    <button
+      type="button"
       class="button"
       :class="{ activo: botonActivo === 4 }"
       @click="seleccionarBoton(4)"
-      ><img class="img" src="../../assets/Elemento lateral (3).png" alt="Imagen de elemento"></button>
-  </div>   
+    >
+      <img class="img" src="../../assets/Elemento lateral (3).png" alt="Imagen de elemento">
+    </button>
+  </div>
 </template>
 
 <style scoped>
-
 .contenedor-SideBar {
-  width: fit-content;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 80px;
-  padding: 12px 10px;
-  margin-top: 16px;
+  gap: 28px;
+  padding: 18px 8px;
+  margin-top: 0;
   background-color: #D6D6D6;
   border-radius: 12px;
   box-shadow: 0 5px 20px -8px rgba(0, 0, 0, 0.50);
@@ -89,7 +112,7 @@ function seleccionarBoton(indice: number) {
 }
 
 .img {
-  width: 28px;
+  width: 36px;
   height: auto;
   display: block;
   transition: filter 0.2s ease;
